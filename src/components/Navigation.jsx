@@ -12,25 +12,36 @@ export default function Navigation() {
     "Push and pull Lock": {
       subcategories: [
         "Models For Local Offline Brand",
-        "Models for Online RTS", 
-        "New Product",
-        "Single system",
-        "Double system"
-      ]
+        "Models for Online RTS"
+      ],
+      nestedSubcategories: {
+        "Models For Local Offline Brand": [
+          "New Product",
+          "Double system", 
+          "Single system"
+        ]
+      }
     },
     "Commercial digital locks": {
       subcategories: [
         "Frameless door lock",
         "Framed door lock",
-        "Apartment lock",
-        "Slim door/window lock",
-        "Cylinder lock",
-        "Deadbolt lock",
-        "Knob Lock",
-        "Lever handle lock",
-        "Rim lock",
-        "Interior door lock"
-      ]
+        "Apartment lock"
+      ],
+      nestedSubcategories: {
+        "Frameless door lock": [
+          "Glass door lock"
+        ],
+        "Framed door lock": [
+          "Slim door/window lock",
+          "Cylinder lock",
+          "Deadbolt lock",
+          "Knob Lock",
+          "Lever handle lock",
+          "Rim lock",
+          "Interior door lock"
+        ]
+      }
     }
   };
 
@@ -83,7 +94,7 @@ export default function Navigation() {
                     <div key={category} className="relative group">
                       <Link
                         href={`/products/${encodeURIComponent(category)}`}
-                        className="flex items-center justify-between block px-4 py-2 text-sm text-foreground hover:bg-secondary"
+                        className="flex items-center justify-between px-4 py-2 text-sm text-foreground hover:bg-secondary"
                         data-testid={`nav-category-${category.toLowerCase().replace(/\s+/g, '-')}`}
                       >
                         {category}
@@ -92,14 +103,34 @@ export default function Navigation() {
                       <div className="absolute top-0 invisible w-64 ml-1 transition-all duration-200 bg-white border rounded-lg shadow-lg opacity-0 left-full border-border group-hover:opacity-100 group-hover:visible">
                         <div className="py-2">
                           {data.subcategories.map((subcategory) => (
-                            <Link
-                              key={subcategory}
-                              href={`/products/${encodeURIComponent(category)}?subcategory=${encodeURIComponent(subcategory)}`}
-                              className="block px-4 py-2 text-sm text-foreground hover:bg-secondary"
-                              data-testid={`nav-subcategory-${subcategory.toLowerCase().replace(/\s+/g, '-')}`}
-                            >
-                              {subcategory}
-                            </Link>
+                            <div key={subcategory} className="relative group/sub">
+                              <Link
+                                href={`/products/${encodeURIComponent(category)}?subcategory=${encodeURIComponent(subcategory)}`}
+                                className="flex items-center justify-between px-4 py-2 text-sm text-foreground hover:bg-secondary"
+                                data-testid={`nav-subcategory-${subcategory.toLowerCase().replace(/\s+/g, '-')}`}
+                              >
+                                {subcategory}
+                                {data.nestedSubcategories && data.nestedSubcategories[subcategory] && (
+                                  <ChevronRight className="w-4 h-4" />
+                                )}
+                              </Link>
+                              {data.nestedSubcategories && data.nestedSubcategories[subcategory] && (
+                                <div className="absolute top-0 invisible w-64 ml-1 transition-all duration-200 bg-white border rounded-lg shadow-lg opacity-0 left-full border-border group-hover/sub:opacity-100 group-hover/sub:visible">
+                                  <div className="py-2">
+                                    {data.nestedSubcategories[subcategory].map((nestedSubcategory) => (
+                                      <Link
+                                        key={nestedSubcategory}
+                                        href={`/products/${encodeURIComponent(category)}?subcategory=${encodeURIComponent(nestedSubcategory)}`}
+                                        className="block px-4 py-2 text-sm text-foreground hover:bg-secondary"
+                                        data-testid={`nav-nested-subcategory-${nestedSubcategory.toLowerCase().replace(/\s+/g, '-')}`}
+                                      >
+                                        {nestedSubcategory}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
                           ))}
                         </div>
                       </div>

@@ -1,4 +1,5 @@
 import Navigation from "./Navigation";
+import SocialMediaIcons from "./SocialMediaIcons";
 import { MessageCircle } from "lucide-react";
 
 export default function Layout({ children }) {
@@ -6,6 +7,9 @@ export default function Layout({ children }) {
     <div className="min-h-screen bg-background">
       <Navigation />
       <main>{children}</main>
+      
+      {/* Fixed Social Media Icons */}
+      <SocialMediaIcons />
       
       {/* Footer */}
       <footer className="bg-foreground text-white py-16">

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import HeroSlider from "../components/HeroSlider";
+import MiniCarousel from "../components/MiniCarousel";
 import ProductCard from "../components/ProductCard";
 import { Button } from "../components/ui/button";
 import { sampleProducts } from "../../constant";
@@ -19,12 +20,12 @@ export default function Home() {
       <section className="relative h-screen overflow-hidden" data-testid="hero-section">
         <HeroSlider />
         <div className="absolute inset-0 flex items-center">
-          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 w-full">
+          <div className="w-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div className="space-y-8 fade-in text-white">
+              <div className="space-y-8 text-white fade-in">
                 <h1 className="text-5xl font-bold leading-tight lg:text-6xl" data-testid="hero-title">
                   UNLOCK THE FUTURE<br />
-                  <span className="text-transparent bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text">
+                  <span className="text-transparent bg-gradient-to-r from-purple-400 to-red-400 bg-clip-text">
                     WITH CUSTOM SMART LOCKS
                   </span>
                 </h1>
@@ -40,7 +41,7 @@ export default function Home() {
                   <Link href="/contact">
                     <Button 
                       variant="outline" 
-                      className="px-8 py-4 text-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-gray-900"
+                      className="px-8 py-4 text-lg font-semibold text-black border-2 border-white hover:bg-white hover:text-gray-900"
                       data-testid="button-quote"
                     >
                       Get Quote
@@ -52,6 +53,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Mini Carousel below Hero */}
+      <MiniCarousel />
 
       {/* New Product Launch Section */}
       <section className="py-20 bg-white" data-testid="products-section">

@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 
 const heroImages = [
   {
-    url: "/hero1.png",
+    url: "/hero/hero1.jpg",
     alt: "Smart lock collection"
   },
   {
-    url: "/hero2.png",
+    url: "/hero/hero2.jpg",
     alt: "Digital door lock with keypad"
   },
   {
-    url: "",
+    url: "/hero/hero3.jpg",
     alt: "Smart building entrance"
   }
 ];

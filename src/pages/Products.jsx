@@ -26,7 +26,39 @@ export default function Products() {
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          product.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesSubcategory = !subcategory || product.subcategory === subcategory;
+
+    let matchesSubcategory = true;
+    if (subcategory) {
+      // Special grouping logic for Commercial digital locks
+      if (category && decodeURIComponent(category) === "Commercial digital locks") {
+        if (subcategory === "Frameless door lock") {
+          // Frameless maps to Glass door products only
+          matchesSubcategory = product.subcategory === "Glass door lock";
+        } else if (subcategory === "Framed door lock") {
+          // Framed maps to the rest (excluding glass door and apartment)
+          const framedNested = new Set([
+            "Slim door/window lock",
+            "Cylinder lock",
+            "Deadbolt lock",
+            "Knob Lock",
+            "Lever handle lock",
+            "Rim lock",
+            "Interior door lock",
+          ]);
+          matchesSubcategory = framedNested.has(product.subcategory);
+        } else if (subcategory === "Apartment lock") {
+          matchesSubcategory = product.subcategory === "Apartment lock";
+        } else if (subcategory === "Glass door lock") {
+          // Directly selecting the nested item also works
+          matchesSubcategory = product.subcategory === "Glass door lock";
+        } else {
+          matchesSubcategory = product.subcategory === subcategory;
+        }
+      } else {
+        matchesSubcategory = product.subcategory === subcategory;
+      }
+    }
+
     return matchesSearch && matchesSubcategory;
   });
 
@@ -50,28 +82,38 @@ export default function Products() {
       count: products.filter(p => p.category === "Push and pull Lock").length,
       subcategories: [
         "Models For Local Offline Brand",
-        "New Product", 
-        "Double system",
-        "Single system",
         "Models for Online RTS"
-      ]
+      ],
+      nestedSubcategories: {
+        "Models For Local Offline Brand": [
+          "New Product",
+          "Double system", 
+          "Single system"
+        ]
+      }
     },
     {
       name: "Commercial digital locks",
       count: products.filter(p => p.category === "Commercial digital locks").length,
       subcategories: [
-        "Framed door lock",
-        "Cylinder lock",
-        "Deadbolt lock",
-        "Knob Lock",
-        "Lever handle lock",
-        "Rim lock",
-        "Slim door/window lock",
-        "Interior door lock",
         "Frameless door lock",
+        "Framed door lock",
         "Apartment lock",
-        "Glass door lock"
-      ]
+      ],
+      nestedSubcategories: {
+        "Frameless door lock": [
+          "Glass door lock"
+        ],
+        "Framed door lock": [
+          "Slim door/window lock",
+          "Cylinder lock",
+          "Deadbolt lock",
+          "Knob Lock",
+          "Lever handle lock",
+          "Rim lock",
+          "Interior door lock",
+        ]
+      }
     }
   ];
 
@@ -125,16 +167,33 @@ export default function Products() {
                     {category === cat.name && (
                       <div className="mt-2 ml-4 space-y-1">
                         {cat.subcategories.map((sub) => (
-                          <a
-                            key={sub}
-                            href={`/products/${encodeURIComponent(cat.name)}?subcategory=${encodeURIComponent(sub)}`}
-                            className={`block py-1 px-2 text-sm rounded hover:bg-secondary transition-colors ${
-                              subcategory === sub ? 'text-primary bg-secondary' : 'text-muted-foreground'
-                            }`}
-                            data-testid={`subcategory-${sub.toLowerCase().replace(/\s+/g, '-')}`}
-                          >
-                            {sub}
-                          </a>
+                          <div key={sub}>
+                            <a
+                              href={`/products/${encodeURIComponent(cat.name)}?subcategory=${encodeURIComponent(sub)}`}
+                              className={`block py-1 px-2 text-sm rounded hover:bg-secondary transition-colors ${
+                                subcategory === sub ? 'text-primary bg-secondary' : 'text-muted-foreground'
+                              }`}
+                              data-testid={`subcategory-${sub.toLowerCase().replace(/\s+/g, '-')}`}
+                            >
+                              {sub}
+                            </a>
+                            {cat.nestedSubcategories && cat.nestedSubcategories[sub] && (
+                              <div className="mt-1 ml-4 space-y-1">
+                                {cat.nestedSubcategories[sub].map((nestedSub) => (
+                                  <a
+                                    key={nestedSub}
+                                    href={`/products/${encodeURIComponent(cat.name)}?subcategory=${encodeURIComponent(nestedSub)}`}
+                                    className={`block py-1 px-2 text-sm rounded hover:bg-secondary transition-colors ${
+                                      subcategory === nestedSub ? 'text-primary bg-secondary' : 'text-muted-foreground'
+                                    }`}
+                                    data-testid={`nested-subcategory-${nestedSub.toLowerCase().replace(/\s+/g, '-')}`}
+                                  >
+                                    {nestedSub}
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                          </div>
                         ))}
                       </div>
                     )}
@@ -215,7 +274,7 @@ export default function Products() {
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {[...Array(6)].map((_, i) => (
                   <div key={i} className="p-6 bg-white border rounded-xl border-border animate-pulse" data-testid={`product-skeleton-${i}`}>
-                    <div className="w-full h-48 mb-4 rounded bg-muted"></div>
+                    <div className="w-full h-40 mb-4 rounded sm:h-48 md:h-56 lg:h-64 bg-muted"></div>
                     <div className="h-4 mb-2 rounded bg-muted"></div>
                     <div className="w-3/4 h-4 rounded bg-muted"></div>
                   </div>
@@ -229,7 +288,7 @@ export default function Products() {
             ) : (
               <div 
                 className={viewMode === "grid" 
-                  ? "grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                  ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
                   : "space-y-4"
                 }
                 data-testid="products-grid"
