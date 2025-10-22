@@ -19,7 +19,7 @@ export default function Layout({ children }) {
             <div className="space-y-4">
               <div className="text-2xl font-bold">
               <img 
-                src="/public/logo.png" 
+                src="/logo.png" 
                 alt="Chima Logo" 
                 className="w-32 h-32 sm:w-40 sm:h-40 md:w-[180px] md:h-[180px]" 
               />
