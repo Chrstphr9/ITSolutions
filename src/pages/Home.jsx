@@ -17,35 +17,26 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section with Background Image Slider */}
-      <section className="relative h-screen overflow-hidden" data-testid="hero-section">
+      <section className="relative h-screen overflow-hidden -mt-15" data-testid="hero-section">
         <HeroSlider />
         <div className="absolute inset-0 flex items-center">
           <div className="w-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="space-y-8 text-white fade-in">
-                <h1 className="text-5xl font-bold leading-tight lg:text-6xl" data-testid="hero-title">
-                  UNLOCK THE FUTURE<br />
-                  <span className="text-transparent bg-gradient-to-r from-purple-400 to-red-400 bg-clip-text">
-                    WITH CUSTOM SMART LOCKS
+                <h1 className="text-6xl font-bold leading-tight lg:text-7xl" data-testid="hero-title">
+                  {/* UNLOCK THE<br /> */}
+                  <span className="text-white bg-clip-text">
+                    {/* FUTURE OF SECURITY */}
                   </span>
                 </h1>
-                <p className="text-xl leading-relaxed text-white/90" data-testid="hero-subtitle">
-                  Advanced smart lock technology with IoT integration, biometric access, and enterprise-grade security solutions for modern businesses.
+                <p className="max-w-2xl text-xl leading-relaxed text-white/90" data-testid="hero-subtitle">
+                  {/* Advanced smart lock technology with IoT integration, biometric access, and enterprise-grade security solutions for modern businesses. */}
                 </p>
-                <div className="flex flex-col gap-4 sm:flex-row">
+                <div>
                   <Link href="/products">
-                    <Button className="px-8 py-4 text-lg font-semibold gradient-button text-primary-foreground" data-testid="button-explore">
+                    {/* <Button className="px-8 py-4 text-lg font-semibold gradient-button text-primary-foreground" data-testid="button-explore">
                       Explore Products
-                    </Button>
-                  </Link>
-                  <Link href="/contact">
-                    <Button 
-                      variant="outline" 
-                      className="px-8 py-4 text-lg font-semibold text-black border-2 border-white hover:bg-white hover:text-gray-900"
-                      data-testid="button-quote"
-                    >
-                      Get Quote
-                    </Button>
+                    </Button> */}
                   </Link>
                 </div>
               </div>
@@ -98,7 +89,7 @@ export default function Home() {
       </section>
 
       {/* IoT Integration Section */}
-      <section className="relative py-20 overflow-hidden text-white bg-gradient-to-r from-blue-900 to-purple-900" data-testid="iot-section">
+      <section className="relative py-20 overflow-hidden text-[#3B3B3B]" data-testid="iot-section">
         <div className="absolute inset-0">
           <img 
             src="" 
@@ -110,11 +101,11 @@ export default function Home() {
           <h2 className="mb-6 text-4xl font-bold lg:text-5xl" data-testid="iot-title">
             LET EVERY OBJECT "SPEAK"
           </h2>
-          <p className="mb-8 text-xl text-blue-100" data-testid="iot-subtitle">
+          <p className="mb-8 text-xl text-[#3B3B3B]" data-testid="iot-subtitle">
             IoT makes life simpler and smarter!
           </p>
           <Button 
-            className="px-8 py-4 text-lg font-semibold text-blue-900 bg-white hover:bg-blue-50"
+            className="px-8 py-4 text-lg font-semibold text-[#3B3B3B] bg-white hover:bg-blue-50"
             data-testid="button-learn-iot"
           >
             Learn More About IoT

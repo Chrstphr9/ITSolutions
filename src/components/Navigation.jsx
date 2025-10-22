@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Search, Menu, ChevronDown, ChevronRight } from "lucide-react";
 
 export default function Navigation() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isActive = (path) => location === path;
 
@@ -46,14 +56,25 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b shadow-sm border-border">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white border-b shadow-sm border-border' 
+        : 'bg-transparent'
+    }`}>
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="text-2xl font-bold" data-testid="logo">
-              <span className="text-foreground">TOPT</span>
-              <span className="text-primary">EQ</span>
+              <img 
+                src="/public/CHIMA_LOGO.PNG" 
+                alt="" 
+                width={120} 
+                height={120} 
+                className={`transition-all duration-300 ${
+                  isScrolled ? 'brightness-100' : 'brightness-0 invert'
+                }`}
+              />
             </Link>
           </div>
 
@@ -62,7 +83,9 @@ export default function Navigation() {
             <Link 
               href="/" 
               className={`transition-colors px-3 py-2 font-medium ${
-                isActive('/') ? 'text-primary' : 'text-foreground hover:text-primary'
+                isScrolled
+                  ? (isActive('/') ? 'text-primary' : 'text-foreground hover:text-primary')
+                  : 'text-white hover:text-gray-200'
               }`}
               data-testid="nav-home"
             >
@@ -72,7 +95,9 @@ export default function Navigation() {
             <Link 
               href="/about" 
               className={`transition-colors px-3 py-2 font-medium ${
-                isActive('/about') ? 'text-primary' : 'text-foreground hover:text-primary'
+                isScrolled
+                  ? (isActive('/about') ? 'text-primary' : 'text-foreground hover:text-primary')
+                  : 'text-white hover:text-gray-200'
               }`}
               data-testid="nav-about"
             >
@@ -82,7 +107,11 @@ export default function Navigation() {
             {/* Products Dropdown */}
             <div className="relative dropdown">
               <button 
-                className="flex items-center px-3 py-2 font-medium transition-colors text-foreground hover:text-primary"
+                className={`flex items-center px-3 py-2 font-medium transition-colors ${
+                  isScrolled
+                    ? 'text-foreground hover:text-primary'
+                    : 'text-white hover:text-gray-200'
+                }`}
                 data-testid="nav-products"
               >
                 PRODUCTS
@@ -143,7 +172,9 @@ export default function Navigation() {
             <Link 
               href="/solution" 
               className={`transition-colors px-3 py-2 font-medium ${
-                isActive('/solution') ? 'text-primary' : 'text-foreground hover:text-primary'
+                isScrolled
+                  ? (isActive('/solution') ? 'text-primary' : 'text-foreground hover:text-primary')
+                  : 'text-white hover:text-gray-200'
               }`}
               data-testid="nav-solution"
             >
@@ -152,7 +183,9 @@ export default function Navigation() {
             <Link 
               href="/contact" 
               className={`transition-colors px-3 py-2 font-medium ${
-                isActive('/contact') ? 'text-primary' : 'text-foreground hover:text-primary'
+                isScrolled
+                  ? (isActive('/contact') ? 'text-primary' : 'text-foreground hover:text-primary')
+                  : 'text-white hover:text-gray-200'
               }`}
               data-testid="nav-contact"
             >
@@ -164,13 +197,21 @@ export default function Navigation() {
           {/* Search and Menu */}
           <div className="flex items-center space-x-4">
             <button 
-              className="text-foreground hover:text-primary"
+              className={`transition-colors ${
+                isScrolled
+                  ? 'text-foreground hover:text-primary'
+                  : 'text-white hover:text-gray-200'
+              }`}
               data-testid="button-search"
             >
               <Search className="w-5 h-5" />
             </button>
             <button 
-              className="md:hidden text-foreground hover:text-primary"
+              className={`md:hidden transition-colors ${
+                isScrolled
+                  ? 'text-foreground hover:text-primary'
+                  : 'text-white hover:text-gray-200'
+              }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               data-testid="button-mobile-menu"
             >
