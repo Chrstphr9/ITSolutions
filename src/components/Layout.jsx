@@ -18,7 +18,11 @@ export default function Layout({ children }) {
             {/* Company Info */}
             <div className="space-y-4">
               <div className="text-2xl font-bold">
-              <img src="/public/CHIMA_LOGO.PNG" alt="" width={180} height={180} />
+              <img 
+                src="/public/logo.png" 
+                alt="Chima Logo" 
+                className="w-32 h-32 sm:w-40 sm:h-40 md:w-[180px] md:h-[180px]" 
+              />
               </div>
               <p className="text-gray-300">
                 Advanced smart lock technology solutions for modern businesses and homes.

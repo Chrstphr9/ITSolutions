@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Search, Menu, ChevronDown, ChevronRight } from "lucide-react";
+import { Search, Menu, ChevronDown, ChevronRight, X } from "lucide-react";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -56,10 +56,10 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
       isScrolled 
-        ? 'bg-white border-b shadow-sm border-border' 
-        : 'bg-transparent'
+        ? 'bg-white shadow-sm border-border' 
+        : 'bg-transparent border-transparent'
     }`}>
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -67,13 +67,9 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="text-2xl font-bold" data-testid="logo">
               <img 
-                src="/public/CHIMA_LOGO.PNG" 
+                src="/public/logo.png" 
                 alt="" 
-                width={120} 
-                height={120} 
-                className={`transition-all duration-300 ${
-                  isScrolled ? 'brightness-100' : 'brightness-0 invert'
-                }`}
+   className="w-20 h-20 sm:w-40 sm:h-40 md:w-[120px] md:h-[120px]" 
               />
             </Link>
           </div>
@@ -199,8 +195,8 @@ export default function Navigation() {
             <button 
               className={`transition-colors ${
                 isScrolled
-                  ? 'text-foreground hover:text-primary'
-                  : 'text-white hover:text-gray-200'
+                  ? 'text-black hover:text-primary'
+                  : 'text-black hover:text-gray-200'
               }`}
               data-testid="button-search"
             >
@@ -209,34 +205,59 @@ export default function Navigation() {
             <button 
               className={`md:hidden transition-colors ${
                 isScrolled
-                  ? 'text-foreground hover:text-primary'
-                  : 'text-white hover:text-gray-200'
+                  ? 'text-black hover:text-primary'
+                  : 'text-black hover:text-gray-200'
               }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               data-testid="button-mobile-menu"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
-              <Menu className="w-6 h-6" />
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 transition-transform duration-200" />
+              ) : (
+                <Menu className="w-6 h-6 transition-transform duration-200" />
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="py-4 border-t md:hidden border-border" data-testid="mobile-menu">
-            <div className="flex flex-col space-y-2">
-              <Link href="/" className="px-3 py-2 text-foreground hover:text-primary" data-testid="mobile-nav-home">
+          <div className="fixed left-0 right-0 w-full bg-white shadow-lg md:hidden" style={{ top: "5rem" }} data-testid="mobile-menu">
+            <div className="flex flex-col py-4 border-t border-border">
+              <Link 
+                href="/" 
+                className={`px-4 py-3 text-foreground hover:bg-gray-50 hover:text-primary ${isActive('/') ? 'bg-gray-50 text-primary' : ''}`} 
+                data-testid="mobile-nav-home"
+              >
                 HOME
               </Link>
-              <Link href="/products" className="px-3 py-2 text-foreground hover:text-primary" data-testid="mobile-nav-products">
+              <Link 
+                href="/products" 
+                className={`px-4 py-3 text-foreground hover:bg-gray-50 hover:text-primary ${isActive('/products') ? 'bg-gray-50 text-primary' : ''}`}
+                data-testid="mobile-nav-products"
+              >
                 PRODUCTS
               </Link>
-              <Link href="/solution" className="px-3 py-2 text-foreground hover:text-primary" data-testid="mobile-nav-solution">
+              <Link 
+                href="/solution" 
+                className={`px-4 py-3 text-foreground hover:bg-gray-50 hover:text-primary ${isActive('/solution') ? 'bg-gray-50 text-primary' : ''}`}
+                data-testid="mobile-nav-solution"
+              >
                 SOLUTION
               </Link>
-              <Link href="/contact" className="px-3 py-2 text-foreground hover:text-primary" data-testid="mobile-nav-contact">
+              <Link 
+                href="/contact" 
+                className={`px-4 py-3 text-foreground hover:bg-gray-50 hover:text-primary ${isActive('/contact') ? 'bg-gray-50 text-primary' : ''}`}
+                data-testid="mobile-nav-contact"
+              >
                 CONTACT US
               </Link>
-              <Link href="/about" className="px-3 py-2 text-foreground hover:text-primary" data-testid="mobile-nav-about">
+              <Link 
+                href="/about" 
+                className={`px-4 py-3 text-foreground hover:bg-gray-50 hover:text-primary ${isActive('/about') ? 'bg-gray-50 text-primary' : ''}`}
+                data-testid="mobile-nav-about"
+              >
                 ABOUT US
               </Link>
             </div>
