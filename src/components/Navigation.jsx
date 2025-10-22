@@ -67,7 +67,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="text-2xl font-bold" data-testid="logo">
               <img 
-                src="/public/logo.png" 
+                src="/logo.png" 
                 alt="" 
    className="w-20 h-20 sm:w-40 sm:h-40 md:w-[120px] md:h-[120px]" 
               />
