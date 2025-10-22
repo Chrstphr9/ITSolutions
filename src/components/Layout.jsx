@@ -36,7 +36,7 @@ export default function Layout({ children }) {
                   </svg>
                 </a>
                 <a 
-                  href="https://wa.me/1234567890"
+                  href="https://wa.me/+2348068351722"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 text-white transition-colors rounded-full bg-primary hover:bg-green-600"
@@ -72,20 +72,6 @@ export default function Layout({ children }) {
               </ul>
             </div>
 
-            {/* Purchase Link */}
-            <div>
-              <h4 className="mb-4 text-lg font-semibold">Purchase Link</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li><a href="#" className="transition-colors hover:text-white" data-testid="footer-unlock">Unlock system</a></li>
-                <li><a href="#" className="transition-colors hover:text-white" data-testid="footer-sliding">Sliding door</a></li>
-                <li><a href="#" className="transition-colors hover:text-white" data-testid="footer-apartment">Apartment</a></li>
-                <li><a href="#" className="transition-colors hover:text-white" data-testid="footer-models">Models kit</a></li>
-                <li><a href="#" className="transition-colors hover:text-white" data-testid="footer-download">Download</a></li>
-                <li><a href="#" className="transition-colors hover:text-white" data-testid="footer-gift">Gift shop</a></li>
-                <li><a href="#" className="transition-colors hover:text-white" data-testid="footer-warranty">Warranty</a></li>
-              </ul>
-            </div>
-
             {/* Newsletter */}
             <div>
               <h4 className="mb-4 text-lg font-semibold">Stay Updated</h4>
@@ -105,10 +91,27 @@ export default function Layout({ children }) {
                 </button>
               </div>
             </div>
+
+            {/* Contact Information */}
+            <div>
+              <h4 className="mb-4 text-lg font-semibold">Contact Us</h4>
+              <div className="space-y-3 text-gray-300">
+                <div>
+                  <p className="font-medium">Address:</p>
+                 <p>PLOT 7 ONYIUKE STREET THINKERS CORNER ENUGU</p>
+                </div>
+                <div>
+                  <p className="font-medium">Email:</p>
+                  <a href="mailto:info@starrychima.com" className="transition-colors hover:text-white">
+                    info@starryitsolutions.com
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="pt-8 mt-12 text-center text-gray-300 border-t border-gray-700">
-            <p>Copyright 2023 — Starry IT Solutions. All rights reserved. Shopwell WordPress Theme</p>
+            <p>Copyright 2025 — Starry IT Solutions. All rights reserved. Shopwell WordPress Theme</p>
           </div>
         </div>
       </footer>
