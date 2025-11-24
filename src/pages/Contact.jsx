@@ -27,8 +27,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-foreground" data-testid="office-address-label">Address</h3>
                     <p className="text-muted-foreground" data-testid="office-address">
-                      13 Licheng 2nd Road, Xiaolan Town, Zhongshan City,<br />
-                      Guangdong Province, China 528414
+                    PLOT 7 ONYIUKE STREET THINKERS CORNER ENUGU
                     </p>
                   </div>
                 </div>
@@ -45,7 +44,7 @@ export default function Contact() {
                     <Mail className="w-6 h-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-foreground" data-testid="email-label">Email</h3>
-                      <p className="text-muted-foreground" data-testid="email-address">wu@topteq.cn</p>
+                      <p className="text-muted-foreground" data-testid="email-address">info@starrychima.com</p>
                     </div>
                   </div>
                 </div>
@@ -54,7 +53,7 @@ export default function Contact() {
                     <MessageCircle className="w-6 h-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-foreground" data-testid="whatsapp-label">WhatsApp</h3>
-                      <p className="text-muted-foreground" data-testid="whatsapp-number">+86 18586991896</p>
+                      <p className="text-muted-foreground" data-testid="whatsapp-number">+2348068351722</p>
                     </div>
                   </div>
                 </div>
@@ -91,7 +90,7 @@ export default function Contact() {
         </div>
 
         {/* Map Section */}
-        <div className="mt-16">
+        {/* <div className="mt-16">
           <div className="overflow-hidden border bg-card rounded-2xl border-border" data-testid="map-section">
             <img 
               src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400" 
@@ -100,7 +99,7 @@ export default function Contact() {
               data-testid="map-image"
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

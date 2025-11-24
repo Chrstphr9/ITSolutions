@@ -18,40 +18,45 @@ export default function Navigation() {
 
   const isActive = (path) => location === path;
 
-  const productCategories = {
-    "Push and pull Lock": {
-      subcategories: [
-        "Models For Local Offline Brand",
-        "Models for Online RTS"
-      ],
-      nestedSubcategories: {
-        "Models For Local Offline Brand": [
-          "New Product",
-          "Double system", 
-          "Single system"
-        ]
-      }
+  const solutions = [
+    {
+      name: "LOCKAI Hotel Management System",
+      path: "/solutions/lockai-hotel-management-system",
+      testId: "nav-solution-lockai",
     },
-    "Commercial digital locks": {
-      subcategories: [
-        "Frameless door lock",
-        "Framed door lock",
-        "Apartment lock"
-      ],
-      nestedSubcategories: {
-        "Frameless door lock": [
-          "Glass door lock"
-        ],
-        "Framed door lock": [
-          "Slim door/window lock",
-          "Cylinder lock",
-          "Deadbolt lock",
-          "Knob Lock",
-          "Lever handle lock",
-          "Rim lock",
-          "Interior door lock"
-        ]
-      }
+    {
+      name: "Mobile Key Solution",
+      path: "/solutions/mobile-key-solution",
+      testId: "nav-solution-mobile-key",
+    },
+    {
+      name: "TT Hotel System",
+      path: "/solutions/tt-hotel-system",
+      testId: "nav-solution-tt-hotel",
+    },
+    {
+      name: "HTLOCK Hotel Management System",
+      path: "/solutions/htlock-hotel-management-system",
+      testId: "nav-solution-htlock",
+    },
+  ];
+
+  const productCategories = {
+    "Hotel Lock": {
+      subcategories: [],
+      nestedSubcategories: {}
+    },
+    "Digital Lock": {
+      subcategories: [],
+      nestedSubcategories: {}
+    },
+    "Smart Switch": {
+      subcategories: [],
+      nestedSubcategories: {}
+    },
+    "Hotel Accessories": {
+      subcategories: [],
+      nestedSubcategories: {}
     }
   };
 
@@ -119,63 +124,45 @@ export default function Navigation() {
                     <div key={category} className="relative group">
                       <Link
                         href={`/products/${encodeURIComponent(category)}`}
-                        className="flex items-center justify-between px-4 py-2 text-sm text-foreground hover:bg-secondary"
+                        className="block px-4 py-2 text-sm text-foreground hover:bg-secondary"
                         data-testid={`nav-category-${category.toLowerCase().replace(/\s+/g, '-')}`}
                       >
                         {category}
-                        <ChevronRight className="w-4 h-4" />
                       </Link>
-                      <div className="absolute top-0 invisible w-64 ml-1 transition-all duration-200 bg-white border rounded-lg shadow-lg opacity-0 left-full border-border group-hover:opacity-100 group-hover:visible">
-                        <div className="py-2">
-                          {data.subcategories.map((subcategory) => (
-                            <div key={subcategory} className="relative group/sub">
-                              <Link
-                                href={`/products/${encodeURIComponent(category)}?subcategory=${encodeURIComponent(subcategory)}`}
-                                className="flex items-center justify-between px-4 py-2 text-sm text-foreground hover:bg-secondary"
-                                data-testid={`nav-subcategory-${subcategory.toLowerCase().replace(/\s+/g, '-')}`}
-                              >
-                                {subcategory}
-                                {data.nestedSubcategories && data.nestedSubcategories[subcategory] && (
-                                  <ChevronRight className="w-4 h-4" />
-                                )}
-                              </Link>
-                              {data.nestedSubcategories && data.nestedSubcategories[subcategory] && (
-                                <div className="absolute top-0 invisible w-64 ml-1 transition-all duration-200 bg-white border rounded-lg shadow-lg opacity-0 left-full border-border group-hover/sub:opacity-100 group-hover/sub:visible">
-                                  <div className="py-2">
-                                    {data.nestedSubcategories[subcategory].map((nestedSubcategory) => (
-                                      <Link
-                                        key={nestedSubcategory}
-                                        href={`/products/${encodeURIComponent(category)}?subcategory=${encodeURIComponent(nestedSubcategory)}`}
-                                        className="block px-4 py-2 text-sm text-foreground hover:bg-secondary"
-                                        data-testid={`nav-nested-subcategory-${nestedSubcategory.toLowerCase().replace(/\s+/g, '-')}`}
-                                      >
-                                        {nestedSubcategory}
-                                      </Link>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            <Link 
-              href="/solution" 
-              className={`transition-colors px-3 py-2 font-medium ${
-                isScrolled
-                  ? (isActive('/solution') ? 'text-primary' : 'text-foreground hover:text-primary')
-                  : 'text-white hover:text-gray-200'
-              }`}
-              data-testid="nav-solution"
-            >
-              SOLUTION
-            </Link>
+            {/* Solutions Dropdown */}
+            <div className="relative dropdown">
+              <button
+                className={`flex items-center px-3 py-2 font-medium transition-colors ${
+                  isScrolled
+                    ? "text-foreground hover:text-primary"
+                    : "text-white hover:text-gray-200"
+                }`}
+                data-testid="nav-solutions"
+              >
+                SOLUTIONS
+                <ChevronDown className="w-4 h-4 ml-1" />
+              </button>
+              <div className="absolute left-0 mt-1 bg-white border rounded-lg shadow-lg w-72 dropdown-menu top-full border-border">
+                <div className="py-2">
+                  {solutions.map((solution) => (
+                    <Link
+                      key={solution.path}
+                      href={solution.path}
+                      className="block px-4 py-2 text-sm text-foreground hover:bg-secondary"
+                      data-testid={solution.testId}
+                    >
+                      {solution.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
             <Link 
               href="/contact" 
               className={`transition-colors px-3 py-2 font-medium ${
@@ -239,13 +226,25 @@ export default function Navigation() {
               >
                 PRODUCTS
               </Link>
-              <Link 
-                href="/solution" 
-                className={`px-4 py-3 text-foreground hover:bg-gray-50 hover:text-primary ${isActive('/solution') ? 'bg-gray-50 text-primary' : ''}`}
-                data-testid="mobile-nav-solution"
-              >
-                SOLUTION
-              </Link>
+              
+              {/* Mobile Solutions list */}
+              <div className="pt-2 mt-2 border-t border-border">
+                <div className="px-4 pb-2 text-xs font-semibold tracking-widest text-muted-foreground">
+                  SOLUTIONS
+                </div>
+                {solutions.map((solution) => (
+                  <Link
+                    key={solution.path}
+                    href={solution.path}
+                    className={`px-6 py-2 text-sm text-foreground hover:bg-gray-50 hover:text-primary ${
+                      isActive(solution.path) ? "bg-gray-50 text-primary" : ""
+                    }`}
+                    data-testid={`mobile-${solution.testId}`}
+                  >
+                    {solution.name}
+                  </Link>
+                ))}
+              </div>
               <Link 
                 href="/contact" 
                 className={`px-4 py-3 text-foreground hover:bg-gray-50 hover:text-primary ${isActive('/contact') ? 'bg-gray-50 text-primary' : ''}`}

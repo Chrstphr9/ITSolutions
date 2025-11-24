@@ -9,6 +9,10 @@ import About from "../src/pages/About";
 import Products from "../src/pages/Products";
 import ProductDetails from "../src/pages/ProductDetails";
 import Contact from "../src/pages/Contact";
+import LockAIHotelManagementSystem from "../src/pages/LockAIHotelManagementSystem";
+import MobileKeySolution from "../src/pages/MobileKeySolution";
+import TTHotelSystem from "../src/pages/TTHotelSystem";
+import HTLOCKHotelManagementSystem from "../src/pages/HTLOCKHotelManagementSystem";
 
 function Router() {
 
@@ -22,6 +26,10 @@ function Router() {
       <Route path="/products/:category" component={Products} />
       <Route path="/product/:id" component={ProductDetails} />
       <Route path="/contact" component={Contact} />
+      <Route path="/solutions/lockai-hotel-management-system" component={LockAIHotelManagementSystem} />
+      <Route path="/solutions/mobile-key-solution" component={MobileKeySolution} />
+      <Route path="/solutions/tt-hotel-system" component={TTHotelSystem} />
+      <Route path="/solutions/htlock-hotel-management-system" component={HTLOCKHotelManagementSystem} />
       </Switch>
     </Layout>
   )

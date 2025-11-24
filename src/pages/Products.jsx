@@ -22,8 +22,11 @@ export default function Products() {
   const products = sampleProducts;
   const isLoading = false;
 
-  // Filter products based on search and subcategory
+  // Filter products based on category, search and subcategory
   const filteredProducts = products.filter(product => {
+    // Filter by category if a category is selected
+    const matchesCategory = !category || product.category === decodeURIComponent(category);
+    
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          product.description.toLowerCase().includes(searchTerm.toLowerCase());
 
@@ -59,7 +62,7 @@ export default function Products() {
       }
     }
 
-    return matchesSearch && matchesSubcategory;
+    return matchesCategory && matchesSearch && matchesSubcategory;
   });
 
   // Sort products
@@ -78,42 +81,28 @@ export default function Products() {
 
   const categories = [
     {
-      name: "Push and pull Lock",
-      count: products.filter(p => p.category === "Push and pull Lock").length,
-      subcategories: [
-        "Models For Local Offline Brand",
-        "Models for Online RTS"
-      ],
-      nestedSubcategories: {
-        "Models For Local Offline Brand": [
-          "New Product",
-          "Double system", 
-          "Single system"
-        ]
-      }
+      name: "Hotel Lock",
+      count: products.filter(p => p.category === "Hotel Lock").length,
+      subcategories: [],
+      nestedSubcategories: {}
     },
     {
-      name: "Commercial digital locks",
-      count: products.filter(p => p.category === "Commercial digital locks").length,
-      subcategories: [
-        "Frameless door lock",
-        "Framed door lock",
-        "Apartment lock",
-      ],
-      nestedSubcategories: {
-        "Frameless door lock": [
-          "Glass door lock"
-        ],
-        "Framed door lock": [
-          "Slim door/window lock",
-          "Cylinder lock",
-          "Deadbolt lock",
-          "Knob Lock",
-          "Lever handle lock",
-          "Rim lock",
-          "Interior door lock",
-        ]
-      }
+      name: "Digital Lock",
+      count: products.filter(p => p.category === "Digital Lock").length,
+      subcategories: [],
+      nestedSubcategories: {}
+    },
+    {
+      name: "Smart Switch",
+      count: products.filter(p => p.category === "Smart Switch").length,
+      subcategories: [],
+      nestedSubcategories: {}
+    },
+    {
+      name: "Hotel Accessories",
+      count: products.filter(p => p.category === "Hotel Accessories").length,
+      subcategories: [],
+      nestedSubcategories: {}
     }
   ];
 

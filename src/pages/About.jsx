@@ -38,16 +38,17 @@ export default function About() {
               </h1>
               <div className="p-8 text-black rounded-2xl md:p-1">
                 <p className="text-lg leading-relaxed" data-testid="company-description">
-                  Stary IT Solutions is a foundational Yiwu high-tech company based in Dongguan, China. Our factory, 
-                  located in Zhongshan, spans over 1,000 square meters and employs 50+ staff members. Our key 
-                  mission is promoting quality devices solutions to various import-export services such as 
-                  factory inspections, quality control, and procurement to meet diverse customer requirements.
+                  Starry IT Solutions is a trusted IT service provider for different companies. We provide top quality IT infrastructure services
+                   ranging from Telecom solutions and products, IT support, Website, Security software, to hardware and Software Services.
+                   Our team includes certified professionals with expert and extensive industry experience whose top concern is the provision
+                   of high-quality service to our clients. 12 Years Experiences Over 1000 Satisfied Clients
+                  With over 12 years in business, starry IT Solution prides itself as being one of the best IT companies across the country.
                 </p>
               </div>
             </div>
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
-              <img 
-                src="/public/hero/about.jpg" 
+              <img
+                src="/public/hero/about.jpg"
                 alt="SITS Smart Factory"
                 className="object-cover w-full h-full"
                 data-testid="company-image"
@@ -67,7 +68,7 @@ export default function About() {
                   Smart Lock Technology
                 </h3>
                 <p className="mb-4 text-muted-foreground">
-                  Our primary products are our field lock and China brand offering customers advanced smart lock technology and 
+                  Our primary products are our field lock and China brand offering customers advanced smart lock technology and
                   robust security options. Push-and-pull lock technology for residential windows and doors.
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
@@ -125,8 +126,8 @@ export default function About() {
             </h3>
             <div className="p-8 border bg-card rounded-xl border-border">
               <p className="mb-6 text-lg " data-testid="innovation-description">
-                Our dedicated R&D development holds 16 patents, offering comprehensive OEM/ODM services. 
-                We continue to develop products addressing industry challenges, eliminate, information, 
+                Our dedicated R&D development holds 16 patents, offering comprehensive OEM/ODM services.
+                We continue to develop products addressing industry challenges, eliminate, information,
                 and user-friendly experience.
               </p>
               <Button className="px-8 py-3 font-semibold gradient-button text-primary-foreground" data-testid="button-learn-innovation">
@@ -141,9 +142,9 @@ export default function About() {
       <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50" data-testid="video-section">
         <div className="max-w-4xl px-4 mx-auto text-center sm:px-6 lg:px-8">
           <div className="relative overflow-hidden bg-black rounded-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600" 
-              alt="Smart Lock Installation Video" 
+            <img
+              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600"
+              alt="Smart Lock Installation Video"
               className="object-cover w-full h-96 opacity-60"
               data-testid="video-thumbnail"
             />
@@ -174,22 +175,20 @@ export default function About() {
               <MapPin className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
               <h3 className="mb-2 text-xl font-semibold text-muted-foreground">Visit Our Office</h3>
               <p className="text-muted-foreground">
-                13 Licheng 2nd Road, Xiaolan Town,<br />
-                Zhongshan City, Guangdong Province,<br />
-                China 528414
+                Address: PLOT 7 ONYIUKE STREET THINKERS CORNER ENUGU
               </p>
             </div>
 
             <div className="p-6 bg-white/10 backdrop-blur-sm rounded-xl" data-testid="contact-email">
               <Mail className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
               <h3 className="mb-2 text-xl font-semibold text-muted-foreground">Email Us</h3>
-              <p className="text-muted-foreground">wu@topteq.cn</p>
+              <p className="text-muted-foreground">info@starrychima.com</p>
             </div>
 
             <div className="p-6 bg-white/10 backdrop-blur-sm rounded-xl" data-testid="contact-whatsapp">
               <MessageCircle className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
               <h3 className="mb-2 text-xl font-semibold text-muted-foreground">WhatsApp</h3>
-              <p className="text-muted-foreground">+86 18586991896</p>
+              <p className="text-muted-foreground">+2348068351722</p>
             </div>
           </div>
         </div>
