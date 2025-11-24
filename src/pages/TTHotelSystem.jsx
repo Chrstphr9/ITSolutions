@@ -7,7 +7,7 @@ export default function TTHotelSystem() {
       <section className="relative h-[400px] overflow-hidden" data-testid="tt-hotel-hero">
         <div className="absolute inset-0">
           <img
-            src="/public/hero/hero3.jpg"
+            src="/hero/hero3.jpg"
             alt="TT Hotel System"
             className="object-cover w-full h-full"
           />
@@ -32,7 +32,7 @@ export default function TTHotelSystem() {
           <div className="flex justify-center">
             <div className="max-w-5xl">
               <img 
-                src="/public/solution/solution3.jpg" 
+                src="/solution/solution3.jpg" 
                 alt="LOCKAI Hotel Management System" 
                 className="w-full h-full" 
               />

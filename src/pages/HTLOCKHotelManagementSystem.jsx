@@ -7,7 +7,7 @@ export default function HTLOCKHotelManagementSystem() {
       <section className="relative h-[400px] overflow-hidden" data-testid="htlock-hero">
         <div className="absolute inset-0">
           <img
-            src="/public/hero/aboutHero.png"
+            src="/hero/aboutHero.png"
             alt="HTLOCK Hotel Management System"
             className="object-cover w-full h-full"
           />
@@ -32,7 +32,7 @@ export default function HTLOCKHotelManagementSystem() {
           <div className="flex justify-center">
             <div className="max-w-5xl">
               <img 
-                src="/public/solution/solution4.jpg" 
+                src="/solution/solution4.jpg" 
                 alt="HTLOCK Hotel Management System" 
                 className="w-full h-full" 
               />

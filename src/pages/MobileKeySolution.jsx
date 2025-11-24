@@ -7,7 +7,7 @@ export default function MobileKeySolution() {
       <section className="relative h-[400px] overflow-hidden" data-testid="mobilekey-hero">
         <div className="absolute inset-0">
           <img
-            src="/public/hero/hero2.jpg"
+            src="/hero/hero2.jpg"
             alt="Mobile Key Solution"
             className="object-cover w-full h-full"
           />
@@ -32,7 +32,7 @@ export default function MobileKeySolution() {
           <div className="flex justify-center">
             <div className="max-w-5xl">
               <img 
-                src="/public/solution/solution2.jpg" 
+                src="/solution/solution2.jpg" 
                 alt="LOCKAI Hotel Management System" 
                 className="w-full h-full" 
               />
