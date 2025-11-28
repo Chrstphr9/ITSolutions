@@ -1,6 +1,6 @@
 import Navigation from "./Navigation";
 import SocialMediaIcons from "./SocialMediaIcons";
-import { MessageCircle } from "lucide-react";
+import FeedbackPanel from "./FeedbackPanel";
 
 export default function Layout({ children }) {
   return (
@@ -29,7 +29,7 @@ export default function Layout({ children }) {
               </p>
               <div className="flex space-x-4">
                 <a 
-                  href="https://instagram.com"
+                  href="https://instagram.com/starryitsolutions"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 text-white transition-colors rounded-full bg-primary hover:bg-pink-600"
@@ -40,7 +40,7 @@ export default function Layout({ children }) {
                   </svg>
                 </a>
                 <a 
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/share/17V4rm4jtp/?mibextid=wwXIfr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 text-white transition-colors rounded-full bg-primary hover:bg-blue-600"
@@ -51,7 +51,7 @@ export default function Layout({ children }) {
                   </svg>
                 </a>
                 <a 
-                  href="https://www.tiktok.com"
+                  href="https://www.tiktok.com/starryitsolutions"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 text-white transition-colors rounded-full bg-primary hover:bg-black"
@@ -126,20 +126,12 @@ export default function Layout({ children }) {
           </div>
 
           <div className="pt-8 mt-12 text-center text-gray-300 border-t border-gray-700">
-            <p>Copyright 2025 — Starry IT Solutions. All rights reserved. Shopwell WordPress Theme</p>
+            <p>Copyright 2025 — Starry IT Solutions. All rights reserved.</p>
           </div>
         </div>
       </footer>
 
-      {/* WhatsApp Chat Button */}
-      <div className="fixed z-50 bottom-6 right-6">
-        <button 
-          className="p-4 text-white transition-all transform bg-green-500 rounded-full shadow-lg hover:bg-green-600 hover:scale-110"
-          data-testid="button-whatsapp"
-        >
-          <MessageCircle className="w-6 h-6" />
-        </button>
-      </div>
+      <FeedbackPanel />
     </div>
   );
 }

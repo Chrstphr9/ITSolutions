@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, useLocation } from "wouter";
+import { useParams, useLocation, Link } from "wouter";
 import ProductCard from "../components/ProductCard";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
@@ -142,22 +142,22 @@ export default function Products() {
               <div className="space-y-4">
                 {categories.map((cat) => (
                   <div key={cat.name}>
-                    <a
+                    <Link
                       href={`/products/${encodeURIComponent(cat.name)}`}
                       className={`flex items-center justify-between py-2 px-3 rounded hover:bg-secondary transition-colors ${
-                        category === cat.name ? 'bg-secondary text-primary' : 'text-foreground'
+                        decodeURIComponent(category || "") === cat.name ? 'bg-secondary text-primary' : 'text-foreground'
                       }`}
                       data-testid={`category-${cat.name.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       <span>{cat.name}</span>
                       <span className="px-2 py-1 text-xs rounded bg-muted">({cat.count})</span>
-                    </a>
+                    </Link>
                     
-                    {category === cat.name && (
+                    {decodeURIComponent(category || "") === cat.name && (
                       <div className="mt-2 ml-4 space-y-1">
                         {cat.subcategories.map((sub) => (
                           <div key={sub}>
-                            <a
+                            <Link
                               href={`/products/${encodeURIComponent(cat.name)}?subcategory=${encodeURIComponent(sub)}`}
                               className={`block py-1 px-2 text-sm rounded hover:bg-secondary transition-colors ${
                                 subcategory === sub ? 'text-primary bg-secondary' : 'text-muted-foreground'
@@ -165,11 +165,11 @@ export default function Products() {
                               data-testid={`subcategory-${sub.toLowerCase().replace(/\s+/g, '-')}`}
                             >
                               {sub}
-                            </a>
+                            </Link>
                             {cat.nestedSubcategories && cat.nestedSubcategories[sub] && (
                               <div className="mt-1 ml-4 space-y-1">
                                 {cat.nestedSubcategories[sub].map((nestedSub) => (
-                                  <a
+                                  <Link
                                     key={nestedSub}
                                     href={`/products/${encodeURIComponent(cat.name)}?subcategory=${encodeURIComponent(nestedSub)}`}
                                     className={`block py-1 px-2 text-sm rounded hover:bg-secondary transition-colors ${
@@ -178,7 +178,7 @@ export default function Products() {
                                     data-testid={`nested-subcategory-${nestedSub.toLowerCase().replace(/\s+/g, '-')}`}
                                   >
                                     {nestedSub}
-                                  </a>
+                                  </Link>
                                 ))}
                               </div>
                             )}
